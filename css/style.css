@@ -30,7 +30,7 @@ a:hover {
 
 .wrapper {
   background: white;
-  margin: 70px auto;
+  margin: 70px 70px;
   width: 90%;
   max-width: 1250px;
   overflow: hidden;
@@ -710,12 +710,12 @@ h4 {
 }
 
 figure.effect-moses {
-	background: -webkit-linear-gradient(-45deg, #EC65B7 0%,#05E0D8 100%);
-	background: linear-gradient(-45deg, #EC65B7 0%,#05E0D8 100%);
+	background: -webkit-linear-gradient(-45deg, #ffffff 100%,#ffffff 100%);
+	background: linear-gradient(-45deg, #333333 100%,#ffffff 100%);
 }
 
 figure.effect-moses img {
-	opacity: 0.85;
+	opacity: 10;
 	-webkit-transition: opacity 0.35s;
 	transition: opacity 0.35s;
 }
