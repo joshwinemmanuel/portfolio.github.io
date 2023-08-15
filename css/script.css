@@ -1,0 +1,43 @@
+.header {
+    background-color: rgba(52,53,65,1);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px 5px 0 0 ;
+  }
+
+
+.copy-icon {
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+.codehilite code, .codehilite pre {
+  padding: 6px 0px 6px 12px;
+  margin-bottom: 16px;
+}
+
+/* source: http://smasue.github.io/pygments-darcula */
+.codehilite {
+max-width: 80%;
+  margin-bottom: 1.5em;
+  background-color: #2B2B2B;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 5px;
+  overflow: hidden;
+    position: relative;
+    
+}
+
+.codehilite pre {
+  color: #A9B7C6;
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  overflow-x: auto;
+  text-align: left;
+}
