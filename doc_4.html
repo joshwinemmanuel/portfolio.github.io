@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Joshwin Emmanuel Johnson - Home</title>
+
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Boostrap Core CSS-->
+        <!-- <link rel="stylesheet" href="css/bootstrap.min.css">  -->
+        
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="css/style.css">
+        
+        <!-- Animate CSS -->
+        <link href="css/animate.css" rel="stylesheet">
+        
+        <!-- Google fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Qwigley" />
+        <!-- Font awesome -->
+        <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/slider.css">
+
+   </head>
+   <body>
+   
+   <!-- Start wrapper -->
+   <div class="wrapper" style="	padding-left: 115px;
+   padding-right: 115px;">
+    <div id="lb-back">
+      <div id="lb-img"></div>
+    </div>
+  <H5 style="color: black; font-size: 30px; text-transform:uppercase;">ESP32 Pager</H5> 
+  <H3 style="color: black; font-size: 20px;"> 
+
+Pager</H3>
+A pager is a wireless telecommunications device that receives and displays alphanumeric or voice messages. One-way pagers can only receive messages, while response pagers and two-way pagers can also acknowledge, reply to and originate messages using an internal transmitter(<a href="https://en.wikipedia.org/wiki/Pager">Wiki</a>).
+
+<H3 style="color: black; font-size: 20px;"> ESP-NOW protocol</H3>
+ESP-NOW is a protocol developed by Espressif, which enables multiple devices to communicate with one another without using Wi-Fi. The protocol is similar to the low-power 2.4GHz wireless connectivity that is often deployed in wireless mouses(<a href="https://www.espressif.com/en/products/software/esp-now/overview#:~:text=ESP%2DNOW%20is%20yet%20another,often%20deployed%20in%20wireless%20mouses.">espressif.com</a>). for more information you can watch this youtube video<center>
+<iframe width="612" height="345" src="https://www.youtube.com/embed/QmvMtgNs9r8?autoplay=1&mute=1&loop=1&controls=0">
+</iframe></center>
+
+<H3 style="color: black; font-size: 20px;"> Designing</H3>
+
+<H3 style="color: black; font-size: 20px;"> Master Board</H3>
+I was planning to make a pager which have a master board which can send a spesific predifined msg to slave modules while pressing buttons throuch wifi using ESP-NOW protocol so I took fusion and strted creating the schematic  
+<img class="zoomD" src="https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson/images/master schematic-1.png" alt="schem.jpg.jpg" style="width:https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson70%;">
+and went to PCB Documents and arranged the components and ruted out the PCB wich was ready to be milled out.
+<img class="zoomD" src="https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson/images/schmatic master.jpg" alt="schem.jpg.jpg" style="width:70%;">
+the files were exported as monochrome images and milled out.<br>
+for downloading file <a href="https://github.com/joshwinemmanuel/Fab_Work/raw/main/Week_14/masternode%20v13.f3z" class="text-primary" target="_blank">Click here</a>
+
+<H3 style="color: black; font-size: 20px;"> Components used</H3>
+
+<center>
+<table width="70%">
+<thead><tr><th title="Field #1">Device</th>
+<th title="Field #2">Value</th>
+<th title="Field #3">Qty</th>
+</tr></thead>
+<tbody><tr>
+<td>VR_REGULATOR</td>
+<td>LM1117SOT223</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>2828XX-2282837-2</td>
+<td>2828XX-2282837-2</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>OLED Display</td>
+<td> </td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>CONN_00X06_HEADER</td>
+<td> </td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>ESP32-WROOM</td>
+<td> </td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>LED</td>
+<td>RED</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>MOSFET</td>
+<td>NSOT23</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>Resistor</td>
+<td>0k</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>Capasitor</td>
+<td>100nf</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>Capasitor</td>
+<td>1uf</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>Resistor</td>
+<td>5k</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>6MM_SWITCH</td>
+<td> </td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Resistor</td>
+<td>10k</td>
+<td align="right">7</td>
+</tr>
+</tbody></table>
+</center>
+
+<H3 style="color: black; font-size: 20px;"> Slave Board</H3>
+for slave bord i will use one switch wich can send a  replay to the master board. it was easier as i just wanted to remove the extra switches provided in the master board
+<img class="zoomD" src="https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson/images/slaveschematic.png.jpg" alt="schem.jpg.jpg" style="width:https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson70%;">
+and went to PCB Documents and arranged the components and ruted out the PCB wich was ready to be milled out.
+<img class="zoomD" src="https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson/images/schmatic slave.jpg" alt="schem.jpg.jpg" style="width:70%;">
+the files were exported as monochrome images and milled out.<br>
+for downloading file <a href="https://github.com/joshwinemmanuel/Fab_Work/raw/main/Week_14/masternode%20v13.f3z" class="text-primary" target="_blank">Click here</a>
+
+<H3 style="color: black; font-size: 20px;"> Components used</H3>
+
+<center>
+<table width="70%">
+<thead><tr><th title="Field #1">Device</th>
+<th title="Field #2">Value</th>
+<th title="Field #3">Qty</th>
+</tr></thead>
+<tbody><tr>
+<td>VR_REGULATOR</td>
+<td>LM1117SOT223</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>2828XX-2282837-2</td>
+<td>2828XX-2282837-2</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>OLED Display</td>
+<td> </td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>CONN_00X06_HEADER</td>
+<td> </td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>ESP32-WROOM</td>
+<td> </td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>LED</td>
+<td>RED</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>MOSFET</td>
+<td>NSOT23</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>Resistor</td>
+<td>0k</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>Capasitor</td>
+<td>100nf</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>Capasitor</td>
+<td>1uf</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>Resistor</td>
+<td>5k</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>6MM_SWITCH</td>
+<td> </td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Resistor</td>
+<td>10k</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+</center>
+
+<H3 style="color: black; font-size: 20px;"> Milling, Stuffing and Soldering</H3>
+ Both bords were milled out and components were placed and the soldering was done 
+<a href="https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson/assignments/week05/#setting-up-machine">Click here</a> to learn more about the milling and soldering processes.This was the end outcome of my work.
+
+<H3 style="color: black; font-size: 20px;"> Master Board</H3>
+<img class="zoomD" src="https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson/images/photo1656086795.jpeg" alt="schem.jpg.jpg" style="width:https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson70%;">
+
+<H3 style="color: black; font-size: 20px;"> Slave Board</H3>
+<img class="zoomD" src="https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson/images/photo1656086795 (1).jpeg" alt="schem.jpg.jpg" style="width:https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson70%;">
+
+<H3 style="color: black; font-size: 20px;"> Programming</H3>
+<center>
+<div class="codehilite"><div class="container">
+  <div class="header">
+    Master Board    <span class="copy-icon" onclick="copyCode()">
+      &#x2398;
+    </span>
+  </div><pre id="__code_1">
+#include &lt;esp_now.h&gt;
+#include &lt;WiFi.h&gt;
+#include &lt;Adafruit_GFX.h&gt;
+#include &lt;Adafruit_SSD1306.h&gt;
+
+#define but_one 18
+#define but_two 5
+#define but_three 19
+bool new_data = 0; // Flag to send data only once
+
+
+// Universal MAC Address
+uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+//First Slave MAC Address
+uint8_t broadcastAddress1[] = {0xYY, 0xYY, 0xYY, 0xYY, 0xYY, 0xYY};
+//Second Slave MAC Address
+uint8_t broadcastAddress2[] = {0xZZ, 0xZZ, 0xZZ, 0xZZ, 0xZZ, 0xZZ};
+
+// Structure example to send data
+// Must match the receiver structure
+typedef struct struct_message
+{
+  int but_status;
+} struct_message;
+
+// Create a struct_message called myData
+struct_message myData;
+
+struct_message incomingReadings;
+// Create peer interface
+esp_now_peer_info_t peerInfo;
+
+// callback when data is sent
+void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+  Serial.print("\r\nLast Packet Send Status:\t");
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+}
+void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
+  memcpy(&incomingReadings, incomingData, sizeof(incomingReadings));
+  Serial.print("Bytes received: ");
+  Serial.println(len);
+  Serial.println(incomingReadings.but_status);
+  if (incomingReadings.but_status == 1)
+  {
+    display.clearDisplay();
+    display.setTextSize(2); display.setCursor(20, 0);
+    display.print("Message Recived");
+    display.display();
+  }
+
+}
+
+void setup() {
+  // Init Serial Monitor
+  Serial.begin(115200);
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
+  {
+    Serial.println(F("SSD1306 allocation failed"));
+    for (;;); // Don't proceed, loop forever
+  }
+  display.clearDisplay();
+  pinMode(but_one, INPUT_PULLUP);
+  
+  // Set device as a Wi-Fi Station
+  WiFi.mode(WIFI_STA);
+
+  // Init ESP-NOW
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Error initializing ESP-NOW");
+    return;
+  }
+
+  // Send Callback Function
+  esp_now_register_send_cb(OnDataSent);
+
+  // Receive Callback Function
+  esp_now_register_recv_cb(OnDataRecv);
+
+  // Register peer
+  memcpy(peerInfo.peer_addr, broadcastAddress, 6);
+  peerInfo.channel = 0;
+  peerInfo.encrypt = false;
+
+  // Add peer
+  if (esp_now_add_peer(&peerInfo) != ESP_OK) {
+    Serial.println("Failed to add peer");
+    return;
+  }
+}
+
+void loop()
+{
+  // Set values to send
+  if (digitalRead(but_one) == LOW && new_data == 3)
+  {
+    myData.but_status = 1;
+    new_data = 0;
+  }
+  if (digitalRead(but_two) == LOW && new_data == 3)
+  {
+    myData.but_status = 0;
+    new_data = 1;
+  }
+  if (digitalRead(but_three) == LOW && new_data == 3)
+  {
+    myData.but_status = 2;
+    new_data = 2;
+  }
+
+  esp_err_t result; // declaration
+
+  // Send message via ESP-NOW
+  if (new_data == 0)
+  {
+
+    result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
+    new_data = 3;
+  }
+
+  if (new_data == 1)
+  {
+
+    result = esp_now_send(broadcastAddress1, (uint8_t *) &myData, sizeof(myData));
+    new_data = 3;
+  }
+
+   if (new_data == 2)
+  {
+
+    result = esp_now_send(broadcastAddress2, (uint8_t *) &myData, sizeof(myData));
+    new_data = 3;
+  }
+
+  if (result == ESP_OK)
+  {
+    Serial.println("Sent with success");
+  }
+  else
+  {
+    Serial.println("Error sending the data");
+  }
+
+  // delay(10000);
+}
+
+
+</code></pre></div></div>
+</center>
+
+<center><div class="codehilite"><div class="container">
+  <div class="header">
+    Slave Board
+    <span class="copy-icon" onclick="copyCode()">
+      &#x2398;
+    </span>
+  </div><pre id="__code_1">
+//Slave
+#include &lt;esp_now.h&gt;
+#include &lt;WiFi.h&gt;
+#include &lt;Adafruit_GFX.h&gt;
+#include &lt;Adafruit_SSD1306.h&gt;
+
+#define but_one 18
+bool new_data = 0; // Flag to send data only once
+
+
+//Master MAC Address
+uint8_t broadcastAddress1[] = {0xYY, 0xYY, 0xYY, 0xYY, 0xYY, 0xYY};
+// Structure example to send data
+// Must match the receiver structure
+typedef struct struct_message
+{
+  int but_status;
+} struct_message;
+
+// Create a struct_message called myData
+struct_message myData;
+
+struct_message incomingReadings;
+// Create peer interface
+esp_now_peer_info_t peerInfo;
+
+// callback when data is sent
+void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+  Serial.print("\r\nLast Packet Send Status:\t");
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+}
+void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
+  memcpy(&incomingReadings, incomingData, sizeof(incomingReadings));
+  Serial.print("Bytes received: ");
+  Serial.println(len);
+  Serial.println(incomingReadings.but_status);
+  if (incomingReadings.but_status == 1)
+  {
+    display.clearDisplay();
+    display.setTextSize(2); display.setCursor(20, 0);
+    display.print("Required Text Meaasge");
+    display.display();
+  }
+
+}
+
+void setup() {
+  // Init Serial Monitor
+  Serial.begin(115200);
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
+  {
+    Serial.println(F("SSD1306 allocation failed"));
+    for (;;); // Don't proceed, loop forever
+  }
+  display.clearDisplay();
+  pinMode(but_one, INPUT_PULLUP);
+  
+  // Set device as a Wi-Fi Station
+  WiFi.mode(WIFI_STA);
+
+  // Init ESP-NOW
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Error initializing ESP-NOW");
+    return;
+  }
+
+  // Send Callback Function
+  esp_now_register_send_cb(OnDataSent);
+
+  // Receive Callback Function
+  esp_now_register_recv_cb(OnDataRecv);
+
+  // Register peer
+  memcpy(peerInfo.peer_addr, broadcastAddress, 6);
+  peerInfo.channel = 0;
+  peerInfo.encrypt = false;
+
+  // Add peer
+  if (esp_now_add_peer(&peerInfo) != ESP_OK) {
+    Serial.println("Failed to add peer");
+    return;
+  }
+}
+
+void loop()
+{
+  // Set values to send
+  if (digitalRead(but_one) == LOW && new_data == 1)
+  {
+    myData.but_status = 1;
+    new_data = 0;
+  }
+  
+
+  esp_err_t result; // declaration
+
+  // Send message via ESP-NOW
+  if (new_data == 0)
+  {
+
+    result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
+    new_data = 1;
+  }
+
+  if (result == ESP_OK)
+  {
+    Serial.println("Sent with success");
+  }
+  else
+  {
+    Serial.println("Error sending the data");
+  }
+
+  // delay(10000);
+}
+
+</code></pre></div></div></center>
+
+
+
+   <center><div class="codehilite"><div class="container">
+  <div class="header">
+    For finding MAC address
+    <span class="copy-icon" onclick="copyCode()">
+      &#x2398;
+    </span>
+  </div><pre id="__code_1">#include &lt;WiFi.h&gt;
+
+void setup() {
+  Serial.begin(115200);
+  Serial.println();
+  Serial.print("MAC Address:  ");
+  Serial.println(WiFi.macAddress());
+}
+
+void loop() {
+
+}
+</code></pre></div></div></center>
+
+<H3 style="color: black; font-size: 20px;"> Result</H3>
+
+  <center>
+<video width="70%"  autoplay="" loop="" muted="" controls="">
+      <source src="https://fabacademy.org/2022/labs/kochi/students/joshwin-johnson/Video/Vid 20220622 152321 (1).mp4" type=video/mp4>
+    </video>
+</center>  <p>
+Multiple devices can be added to the project and can be triggered by other switches.
+</P>
+
+<div class="footer col-md-6 col-xs-offset-3">
+        <h5 style="
+        font-size: 15px;
+        font-weight: 400;
+        color: #898989;
+        margin-top: 18px;
+        padding-bottom: 0;
+        text-align: center;
+        margin-bottom: 18px;
+        ">©Joshwin Emmanuel 2023. All rights Reserved.
+            <a href="#"><i class="fa fa-linkedin fa-1x icon1"></i></a>
+            <a href="#"><i class="fa fa-whatsapp fa-1x icon1"></i></a>
+            <a href="#"><i class="fa fa-instagram fa-1x icon1"></i></a>
+        </h5>
+     </div>
+     <!-- End footer -->
+      </div>
+      <!-- End col-md-12 -->
+   </div>
+   <!-- End wrapper -->
+
+ <!-- multi slider JS -->
+ <script src="js/slider.js"></script>
+</body>
+<style>
+  body {
+    font-size: 1.1em;
+    font-family: 'Oxygen', sans-serif;	
+	color: #333;
+	line-height: 1.7em;
+	margin-top: 14px;
+	margin-bottom: 20px;	
+}
+.header {
+      background-color: rgba(52,53,65,1);
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 5px 5px 0 0 ;
+    }
+
+
+.copy-icon {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+  .codehilite code, .codehilite pre {
+    padding: 6px 0px 6px 12px;
+    margin-bottom: 16px;
+}
+
+/* source: http://smasue.github.io/pygments-darcula */
+.codehilite {
+  max-width: 80%;
+    margin-bottom: 1.5em;
+    background-color: #2B2B2B;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 5px;
+    overflow: hidden;
+      position: relative;
+      
+}
+
+.codehilite pre {
+    color: #A9B7C6;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    overflow-x: auto;
+    text-align: left;
+}
+
+table {
+      width: 70%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: #333;
+    }
+
+    td {
+      color: #555;
+    }
+
+
+</style>
+
+<script>
+  function copyCode() {
+    const codeBlock = document.querySelector('pre code');
+    const codeText = codeBlock.textContent;
+    
+    const tempInput = document.createElement('textarea');
+    tempInput.value = codeText;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+  }
+</script>
+
+</html>
