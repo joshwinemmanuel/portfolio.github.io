@@ -29,9 +29,9 @@ a:hover {
 
 
 .wrapper {
-
   background: white;
-  margin: 70px 70px;
+  margin: 70px auto;
+  padding: 10px; /* Adds some space inside the wrapper */
   width: 90%;
   max-width: 1250px;
   overflow: hidden;
@@ -40,6 +40,8 @@ a:hover {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+
 
 
 img {
@@ -499,43 +501,51 @@ h4 {
 	line-height: 1.7em;
 }
 
+/* Common styles for the portfolio filter */
 .portfolio-items, 
 .portfolio-filter {
-  list-style: none outside none;
-  margin: 0 0 40px 0;
-  padding: 0;
+  text-align: center;
+  margin: 0 auto;  /* Centers the filter */
+  padding: 10px 0; /* Adds vertical padding */
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width */
 }
 
+/* Styles for the list items inside the filter */
 .portfolio-filter > li {
-  display: inline-block;
+  display: inline-block; /* Keeps the list items in a horizontal line */
+  margin: 0 10px; /* Adds horizontal spacing between items */
 }
 
+/* Button styles inside the filter */
 .portfolio-filter > li a {
   background: none repeat scroll 0 0 #FFFFFF;
   font-size: 1em;
   font-weight: 400;
-  margin-right: 10px;
+  margin-right: 10px; /* Adds horizontal space between buttons */
   text-transform: lowercase;
-  transition: all 0.9s ease 0s;
-  -moz-transition: all 0.9s ease 0s;
-  -webkit-transition: all 0.9s ease 0s;
-  -o-transition: all 0.9s ease 0s;
+  transition: all 0.9s ease;
   outline: none;
   border-radius: 0;
   color: #898989;
   background-color: transparent;
   border: 1px solid #dadada;
-
+  padding: 8px 20px;  /* Padding inside the button */
+  word-wrap: break-word; /* Allows long words to wrap inside the button */
+  white-space: normal; /* Ensures text wraps inside the button */
+  box-sizing: border-box; /* Ensures padding is included in button's total width */
 }
 
+/* Hover and active states for the filter buttons */
 .portfolio-filter > li a:hover,
-.portfolio-filter > li a.active{
+.portfolio-filter > li a.active {
   color: #898989;
   background: #e0e0e0;
   border: 1px solid #dadada;
   box-shadow: none;
 }
 
+/* Portfolio items styles */
 .portfolio-items > li {
   float: left;
   padding: 0;
@@ -546,8 +556,64 @@ h4 {
 
 .portfolio-item {
   margin: 0;
-  padding:0;
+  padding: 0;
 }
+
+/* Media queries to make the filter responsive */
+@media (max-width: 475px) {
+  .portfolio-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+    padding: 10px 0;
+    list-style: none;
+    margin: 0 auto;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .portfolio-filter > li {
+    flex: 0 1 auto; /* Allows shrinking and growing */
+  }
+
+  .portfolio-filter > li a {
+    display: inline-block;
+    padding: 10px 16px;
+    max-width: 200px; /* You can adjust this max-width */
+    word-wrap: break-word;
+    white-space: normal; /* Allows text to wrap */
+    text-align: center;
+    font-size: 1em;
+    font-weight: 400;
+    color: #898989;
+    background-color: transparent;
+    border: 1px solid #dadada;
+    border-radius: 0;
+    transition: all 0.3s ease;
+  }
+
+  .portfolio-filter > li a:hover,
+  .portfolio-filter > li a.active {
+    background-color: #e0e0e0;
+    border-color: #dadada;
+  }
+
+  /* Ensure buttons take full width on small screens */
+  .portfolio-filter > li a {
+    width: 100%; /* Makes buttons take full width on small screens */
+    max-width: none; /* Removes the max-width constraint for small screens */
+    display: block; /* Makes buttons block-level for better stacking on small screens */
+  }
+}
+
+@media (min-width: 475px) {
+  .portfolio-filter > li a {
+    display: inline-block; /* Keeps buttons in a single line on larger screens */
+    width: auto; /* Ensures buttons take their natural width */
+  }
+}
+
 
 /* Isotope styles */
 /**** Isotope Filtering ****/
@@ -1240,4 +1306,30 @@ h6 {
 
 }
 
+
+
+.accomplishment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.accomplishment-header .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.accomplishment-header .date {
+    font-size: 16px;
+    color: #666;
+}
+
+.photo-news {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+    display: block;
+}
 
