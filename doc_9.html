@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Joshwin Emmanuel Johnson - TSA KPI</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="Traffic Sign Assistance KPI Evaluation">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Animate CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Qwigley" />
+    <!-- Font Awesome -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- Start wrapper -->
+    <div class="wrapper" style="padding-left: 115px; padding-right: 115px;">
+        <h5 style="color: black; font-size: 30px;">Traffic Sign Assistance KPI Evaluation</h5>
+        <p>
+            This project focuses on evaluating the performance of a <b>Traffic Sign Assistance (TSA)</b> system by comparing predicted speed limits from sensor data with ground truth labels over mapped driving routes.
+        </p>
+
+        <h3 style="color: black; font-size: 20px;">Data Pipeline & Integration</h3>
+        <ul>
+            <li>Use <b>bag file tags</b> for detected speed limits and GPS coordinates</li>
+            <li>Integrate <b>KML files</b> recorded from GPS logs</li>
+            <li>Query ground truth <b>speed limits</b> from a labeling API</li>
+            <li>Reference <b>OpenStreetMap (OSM)</b> to align roads and regions</li>
+        </ul>
+
+        <h3 style="color: black; font-size: 20px;">KPI Computation</h3>
+        <p>
+            For every segment along the route:
+        </p>
+        <ul>
+            <li>Compare predicted vs. true speed limits over time</li>
+            <li>Compute <b>distance traveled</b> using longitude/latitude or the KML trace</li>
+            <li>Mark segments as <b>true positive</b> or <b>false detection</b></li>
+            <li>Calculate KPI using: <b>(Correct Distance / Total Distance) × 100%</b></li>
+        </ul>
+
+        <h3 style="color: black; font-size: 20px;">Dashboard & Output</h3>
+        <p>
+            The results are visualized in a TSA KPI dashboard showing:
+            <ul>
+                <li>Accuracy per trip</li>
+                <li>False detection zones</li>
+                <li>Route overlays with OSM context</li>
+            </ul>
+        </p>
+
+        <h3 style="color: black; font-size: 20px;">Preview</h3>
+        <img class="zoomD" src="img/tsa_kpi.png" style="width: 100%; border-radius: 10px; margin-top: 20px;">
+
+        <br><br>
+        <p>
+            This KPI evaluation tool plays a key role in validating the reliability of TSA systems in real-world driving conditions, ensuring compliance with speed regulations and improving road safety.
+        </p>
+
+        <!-- Start footer -->
+        <div class="footer col-md-6 col-xs-offset-3">
+            <h5 style="
+                font-size: 15px;
+                font-weight: 400;
+                color: #898989;
+                margin-top: 18px;
+                padding-bottom: 0;
+                text-align: center;
+                margin-bottom: 18px;">
+                ©Joshwin Emmanuel 2025. All rights Reserved.
+                <a href="#"><i class="fa fa-linkedin fa-1x icon1"></i></a>
+                <a href="#"><i class="fa fa-whatsapp fa-1x icon1"></i></a>
+                <a href="#"><i class="fa fa-instagram fa-1x icon1"></i></a>
+            </h5>
+        </div>
+        <!-- End footer -->
+    </div>
+    <!-- End wrapper -->
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Joshwin Emmanuel Johnson - Dashboard</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="Metadata mining dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Animate CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Qwigley" />
+    <!-- Font Awesome -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Latest Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- Start wrapper -->
+    <div class="wrapper" style="padding-left: 115px; padding-right: 115px;">
+        <h5 style="color: black; font-size: 30px;">Bag Metadata Mining & Dashboard</h5>
+        <p>
+            This project involves processing over <b>300,000 sensor bag files</b> to extract and visualize rich spatial-temporal metadata. Each bag file contains embedded GPS and timestamp data, which are mined to build a comprehensive database.
+        </p>
+
+        <h3 style="color: black; font-size: 20px;">Pipeline Overview</h3>
+        <p>
+            The pipeline automates the extraction and enrichment process using the following steps:
+        </p>
+        <ul>
+            <li>Extract <b>latitude, longitude, timestamp, MD5 hash</b> from each bag</li>
+            <li>Calculate <b>time of day</b> (dawn, dusk, day, night) using the <code>astral</code> Python library</li>
+            <li>Use <b>OpenStreetMap API</b> to determine if the location is on a highway, rural area, or urban zone</li>
+            <li>Fetch <b>climate and country details</b> via internal metadata API</li>
+        </ul>
+
+        <h3 style="color: black; font-size: 20px;">Database & Hosting</h3>
+        <p>
+            The extracted and enriched data is stored in a locally hosted database. A custom dashboard interface is developed for monitoring bag processing status and visualizing geographic distributions.
+        </p>
+
+        <h3 style="color: black; font-size: 20px;">Dashboard Preview</h3>
+        <img class="zoomD" src="img/dashbordss.png" style="width: 100%; border-radius: 10px; margin-top: 20px;">
+
+        <br><br>
+        <p>
+            This project streamlines large-scale metadata extraction, location classification, and real-time visualization — making it ideal for autonomous systems, fleet analytics, and spatial AI applications.
+        </p>
+
+        <!-- Start footer -->
+        <div class="footer col-md-6 col-xs-offset-3">
+            <h5 style="
+                font-size: 15px;
+                font-weight: 400;
+                color: #898989;
+                margin-top: 18px;
+                padding-bottom: 0;
+                text-align: center;
+                margin-bottom: 18px;">
+                ©Joshwin Emmanuel 2025. All rights Reserved.
+                <a href="#"><i class="fa fa-linkedin fa-1x icon1"></i></a>
+                <a href="#"><i class="fa fa-whatsapp fa-1x icon1"></i></a>
+                <a href="#"><i class="fa fa-instagram fa-1x icon1"></i></a>
+            </h5>
+        </div>
+        <!-- End footer -->
+    </div>
+    <!-- End wrapper -->
+</body>
+
+</html>

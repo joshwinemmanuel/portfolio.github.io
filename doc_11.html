@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Joshwin Emmanuel Johnson - Motion Prediction</title>
+
+  <meta charset="utf-8">
+  <meta name="description" content="LSTM-based Motion Prediction Framework">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link href="css/animate.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Oxygen:400,300" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Qwigley">
+
+  <!-- Font Awesome -->
+  <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="wrapper" style="padding-left: 115px; padding-right: 115px;">
+    <h5 style="color: black; font-size: 30px;">Motion Prediction Framework (LSTM-based)</h5>
+
+    <p>
+      A modular framework for LSTM-based motion trajectory prediction. It is designed to work with multiple datasets including Argoverse and other compatible formats. The project is containerized using Docker to ensure reproducibility across environments.
+    </p>
+
+    <h3 style="color: black; font-size: 20px;">Project Structure</h3>
+    <pre><code>
+MOTION-PREDICTION-FRAMEWORK/
+├── configs/
+├── FMW_Docker/
+├── map_files/
+├── trg_pred/
+│   ├── datasets/
+│   ├── engine/
+│   ├── models/
+│   └── utils/
+└── data/
+    </code></pre>
+
+    <h3 style="color: black; font-size: 20px;">Environment & Execution</h3>
+    <p>
+      The framework is deployed using Docker and includes full support for GPU acceleration:
+    </p>
+    <pre><code>
+cd FMW_Docker
+docker build --network host -t motion_pred_lstm .
+docker run --gpus all -it --network=host -v &lt;project_dir&gt;:/workspace motion_pred_lstm
+    </code></pre>
+
+    <h3 style="color: black; font-size: 20px;">Data Support</h3>
+    <p>
+      The framework supports Argoverse as well as other structured datasets. It expects the data to be organized into train/val/test folders for seamless integration during training and evaluation.
+    </p>
+    <pre><code>
+data/
+├── argoverse/
+│   ├── train/
+│   ├── val/
+│   └── test/
+├── inhouse/
+│   ├── train/
+│   ├── val/
+│   └── test/
+    </code></pre>
+
+    <h3 style="color: black; font-size: 20px;">Training & Testing</h3>
+    <p>
+      The YAML configuration allows flexibility for hyperparameter tuning and dataset switching. Training and testing are triggered via simple CLI commands:
+    </p>
+    <pre><code>
+python main.py &lt;config.yaml&gt; --gpus 0
+python main.py &lt;config.yaml&gt; --gpus 0 --test --load_from &lt;checkpoint.pth&gt;
+    </code></pre>
+
+    <h3 style="color: black; font-size: 20px;">Output Visualizations</h3>
+    <div style="text-align: center;">
+      <img src="img/Screenshot 2025-05-14 101037.png" alt="Argoverse output" width="200" style="margin: 10px;">
+      <img src="img/Screenshot 2025-05-14 095325.png" alt="Other dataset output" width="200" style="margin: 10px;">
+      <div>
+        <i>Argoverse data result</i> &nbsp;&nbsp;&nbsp;&nbsp;
+        <i>Other dataset result</i>
+      </div>
+    </div>
+
+    <br>
+    <p>
+      The motion prediction framework serves as a research-ready base for testing temporal sequence models in autonomous vehicle scenarios, with clear modularization and cross-dataset compatibility.
+    </p>
+
+    <!-- Footer -->
+    <div class="footer col-md-6 col-xs-offset-3">
+      <h5 style="font-size: 15px; font-weight: 400; color: #898989; margin-top: 18px; text-align: center; margin-bottom: 18px;">
+        ©Joshwin Emmanuel 2025. All rights Reserved.
+        <a href="#"><i class="fa fa-linkedin fa-1x icon1"></i></a>
+        <a href="#"><i class="fa fa-whatsapp fa-1x icon1"></i></a>
+        <a href="#"><i class="fa fa-instagram fa-1x icon1"></i></a>
+      </h5>
+    </div>
+  </div>
+</body>
+</html>

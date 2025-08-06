@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Joshwin Emmanuel Johnson - Data Converter</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="Data to ROSBag / Argoverse Converter">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Animate CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Qwigley" />
+
+    <!-- Font Awesome -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- Start wrapper -->
+    <div class="wrapper" style="padding-left: 115px; padding-right: 115px;">
+
+        <h5 style="color: black; font-size: 30px;">Data to ROSBag / Argoverse Format Converter</h5>
+
+        <p>
+            This tool converts raw automotive `.mf4` log files into formats widely used in autonomous vehicle research:
+            <b>ROSBag</b> and <b>Argoverse</b>. It enables efficient transformation, visualization, and map-based analysis for data engineers and researchers.
+        </p>
+
+        <h3 style="color: black; font-size: 20px;">Functionality</h3>
+        <ul>
+            <li>Convert `.mf4` logs to `.bag` for ROS pipelines</li>
+            <li>Extract GPS, object detections, and sensor data into `.csv` chunks (5 sec)</li>
+            <li>Generate Argoverse-formatted data (track ID, timestamp, object type, city)</li>
+            <li>Generate road network maps as `.xml` compatible with Argoverse formatusing coordinates and OSM API </li>
+        </ul>
+
+        <h3 style="color: black; font-size: 20px;">Sample Extract (CSV format from .mf4)</h3>
+        <pre><code>
+
+| Timestamp   | Latitude       | Longitude        | Object_0_X | Object_0_Y | Object_1_X | Object_1_Y | Object_2_X | Object_2_Y | ...   |
+|-------------|----------------|------------------|------------|------------|------------|------------|------------|------------|-------|
+| 0.0055      | 39.75297723    | -105.14681484    | -17.25     | -0.414     | 63.008     | 0.742      | 19.836     | 4.094      | ...   |
+| 0.0155      | 39.75297723    | -105.14681484    | -17.25     | -0.414     | 63.008     | 0.742      | 19.836     | 4.094      | ...   |
+| 0.0255      | 39.75297723    | -105.14681484    | -17.25     | -0.414     | 63.008     | 0.742      | 19.836     | 4.094      | ...   |
+| 0.0355      | 39.75297723    | -105.14681484    | -17.25     | -0.414     | 63.008     | 0.742      | 19.836     | 4.094      | ...   |
+        </code></pre>
+
+        <h3 style="color: black; font-size: 20px;">Sample Extract (Argoverse Format)</h3>
+        <pre><code>
+| TIMESTAMP   | TRACK_ID       | OBJECT_TYPE        | X            | Y            | CITY_NAME                            |
+|-------------|----------------|--------------------|--------------|--------------|--------------------------------------|
+| 0.00554     | 0              | AGENT              | 1516718.034  | 4468125.12   | Stuttgart                            |
+| 0.00554     | 1              | OTHER              | 1516700.78   | 4468124.70   | Stuttgart                            |
+| 0.00554     | 2              | OTHER              | 1516781.04   | 4468125.86   | Stuttgart                            |
+| 0.00554     | 3              | OTHER              | 1516737.87   | 4468129.21   | Stuttgart                            |
+| 0.01554     | 0              | AGENT              | 1516718.034  | 4468125.12   | Stuttgart                            |
+| 0.01554     | 1              | OTHER              | 1516700.78   | 4468124.70   | Stuttgart                            |
+| 0.01554     | 2              | OTHER              | 1516781.04   | 4468125.86   | Stuttgart                            |
+| 0.01554     | 3              | OTHER              | 1516737.87   | 4468129.21   | Stuttgart                            |
+| 0.02554     | 0              | AGENT              | 1516718.034  | 4468125.12   | Stuttgart                            |
+| 0.02554     | 1              | OTHER              | 1516700.78   | 4468124.70   | Stuttgart                            |
+| 0.02554     | 2              | OTHER              | 1516781.04   | 4468125.86   | Stuttgart                            |
+| 0.02554     | 3              | OTHER              | 1516737.87   | 4468129.21   | Stuttgart                            |
+
+        </code></pre>
+
+        <h3 style="color: black; font-size: 20px;">ROSBag Output</h3>
+        <div align="center">
+            <img src="img/ezgif-45abb13fabd460.gif" alt="ROSBag visualisation" width="500" style="margin: 10px;">
+            <div><i>rosbag visualisation result</i></div>
+        </div>
+
+        <h3 style="color: black; font-size: 20px;">Argoverse Map Export (.xml)</h3>
+<pre style="background: #f5f5f5; padding: 20px; overflow-x: auto; border-radius: 5px;">
+<code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;ArgoverseVectorMap&gt;
+  &lt;node id="0" x="659603.5566636776" y="3972172.3746577837"/&gt;
+  &lt;node id="1" x="654634.7410083482" y="3966663.8535963143"/&gt;
+  &lt;node id="2" x="654053.8017698453" y="3966020.444122055"/&gt;
+  &lt;node id="3" x="653958.1266737791" y="3965896.9295224254"/&gt;
+  &lt;node id="4" x="653795.8020690558" y="3965661.180042478"/&gt;
+  &lt;node id="5" x="653724.3614925568" y="3965550.490979174"/&gt;
+  &lt;node id="6" x="653328.8300690001" y="3964854.6032650215"/&gt;
+  &lt;node id="7" x="652513.0876970273" y="3963434.9702136335"/&gt;
+  &lt;node id="8" x="651801.9474142486" y="3962195.3642657665"/&gt;
+  &lt;node id="9" x="651647.7487211194" y="3961930.448202136"/&gt;
+  &lt;node id="10" x="659606.1555765952" y="3972170.0303771594"/&gt;
+  &lt;node id="11" x="654637.3387385968" y="3966661.5080052256"/&gt;
+  &lt;node id="12" x="654056.568637533" y="3966018.3006568234"/&gt;
+  &lt;node id="13" x="653961.0093945431" y="3965894.944599002"/&gt;
+  &lt;node id="14" x="653798.742644936" y="3965659.281881923"/&gt;
+  &lt;node id="15" x="653727.4043261396" y="3965548.7614810425"/&gt;
+  &lt;node id="16" x="653331.8647458773" y="3964852.8594943224"/&gt;
+  &lt;node id="17" x="652516.1235958497" y="3963433.2285712077"/&gt;
+  &lt;node id="18" x="651804.9723072399" y="3962193.603577722"/&gt;
+  &lt;node id="19" x="651650.7736141107" y="3961928.6875140914"/&gt;
+
+  &lt;way lane_id="0"&gt;
+    &lt;tag k="has_traffic_control" v="None"/&gt;
+    &lt;tag k="turn_direction" v="NONE"/&gt;
+    &lt;tag k="is_intersection" v="None"/&gt;
+    &lt;tag k="l_neighbor_id" v="None"/&gt;
+    &lt;tag k="r_neighbor_id" v="None"/&gt;
+    &lt;nd ref="0"/&gt;
+    &lt;nd ref="1"/&gt;
+    &lt;nd ref="2"/&gt;
+    &lt;nd ref="3"/&gt;
+    &lt;nd ref="4"/&gt;
+    &lt;nd ref="5"/&gt;
+    &lt;nd ref="6"/&gt;
+    &lt;nd ref="7"/&gt;
+    &lt;nd ref="8"/&gt;
+    &lt;nd ref="9"/&gt;
+    &lt;tag k="predecessor" v="None"/&gt;
+    &lt;tag k="successor" v="None"/&gt;
+  &lt;/way&gt;
+
+  &lt;way lane_id="1"&gt;
+    &lt;tag k="has_traffic_control" v="None"/&gt;
+    &lt;tag k="turn_direction" v="NONE"/&gt;
+    &lt;tag k="is_intersection" v="None"/&gt;
+    &lt;tag k="l_neighbor_id" v="None"/&gt;
+    &lt;tag k="r_neighbor_id" v="None"/&gt;
+    &lt;nd ref="10"/&gt;
+    &lt;nd ref="11"/&gt;
+    &lt;nd ref="12"/&gt;
+    &lt;nd ref="13"/&gt;
+    &lt;nd ref="14"/&gt;
+    &lt;nd ref="15"/&gt;
+    &lt;nd ref="16"/&gt;
+    &lt;nd ref="17"/&gt;
+    &lt;nd ref="18"/&gt;
+    &lt;nd ref="19"/&gt;
+    &lt;tag k="predecessor" v="None"/&gt;
+    &lt;tag k="successor" v="None"/&gt;
+  &lt;/way&gt;
+&lt;/ArgoverseVectorMap&gt;
+</code>
+</pre>
+
+        <h3 style="color: black; font-size: 20px;">Map Visualizations</h3>
+        <div style="text-align: center;">
+            <div style="display: inline-block; text-align: center; margin: 10px;">
+                <img src="img/Screenshot 2025-05-14 125258.png" width="500" alt="Argoverse Map Preview"/>
+                <div><i>Map visualisation</i></div>
+            </div>
+
+            <div style="display: inline-block; text-align: center; margin: 10px;">
+                <img src="img/Screenshot 2025-05-14 125333.png" width="500" alt="Zoomed Map"/>
+                <div><i>Map visualisation zoomed</i></div>
+            </div>
+        </div>
+
+        <br>
+        <p>
+            This tool enables faster prototyping, research conversion, and compatibility with AV benchmarks such as Argoverse. It's especially useful for preparing datasets for perception, prediction, and planning pipelines.
+        </p>
+
+        <!-- Footer -->
+        <div class="footer col-md-6 col-xs-offset-3">
+            <h5 style="font-size: 15px; font-weight: 400; color: #898989; margin-top: 18px; text-align: center; margin-bottom: 18px;">
+                ©Joshwin Emmanuel 2025. All rights Reserved.
+                <a href="#"><i class="fa fa-linkedin fa-1x icon1"></i></a>
+                <a href="#"><i class="fa fa-whatsapp fa-1x icon1"></i></a>
+                <a href="#"><i class="fa fa-instagram fa-1x icon1"></i></a>
+            </h5>
+        </div>
+    </div>
+    <!-- End wrapper -->
+</body>
+</html>
